@@ -6,6 +6,10 @@
   let day = 0;
   let percent = 0;
 
+  function isLeap(year) {
+    return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+  }
+
   function getDayOfYear(date) {
     const startOfYear = new Date(date.getFullYear(), 0, 1);
     const diff = date - startOfYear;
@@ -13,8 +17,8 @@
     return dayNumber;
   }
 
-  function convertInPercent(n) {
-    return ((100 / 365) * n).toFixed(2);
+  function convertInPercent(year, dayOfYear) {
+    return ((100 / (365 + isLeap(year))) * dayOfYear).toFixed(2);
   }
 
   function createYearHTML() {
@@ -50,7 +54,7 @@
   }
 
   day = getDayOfYear(today);
-  percent = convertInPercent(day);
+  percent = convertInPercent(today.getFullYear(), day);
 
   document.querySelector('#dayOfTheYear').textContent = day;
   document.querySelector('#inProgress').textContent = `${percent}%`;
