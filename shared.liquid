@@ -28,11 +28,10 @@
       for (let day = 1; day <= 31; day++) {
         const dayDiv = document.createElement('div');
 
-        dayDiv.classList.add('dot');
-
         if (day > daysInMonth) {
           dayDiv.classList.add('bg-white');
         } else {
+          dayDiv.classList.add('dot');
           dayDiv.classList.add('bg-gray-6');
         }
 
