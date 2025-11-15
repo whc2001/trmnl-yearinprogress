@@ -32,10 +32,12 @@
       for (let day = 1; day <= 31; day++) {
         const dayDiv = document.createElement('div');
 
+        dayDiv.classList.add('dot');
+
         if (day > daysInMonth) {
           dayDiv.classList.add('bg-white');
         } else {
-          dayDiv.classList.add('dot');
+          dayDiv.classList.add('dot-available');
           dayDiv.classList.add('bg-gray-6');
         }
 
@@ -48,8 +50,8 @@
 
   function checkPassedDays(d) {
     for (let day = 0; day < d; day++) {
-      document.querySelectorAll('.dot')[day].classList.remove('bg-gray-6');
-      document.querySelectorAll('.dot')[day].classList.add('bg-black');
+      document.querySelectorAll('.dot-available')[day].classList.remove('bg-gray-6');
+      document.querySelectorAll('.dot-available')[day].classList.add('bg-black');
     }
   }
 
