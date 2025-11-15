@@ -47,7 +47,7 @@
   }
 
   function checkPassedDays(d) {
-    for (let day = 0; day <= d; day++) {
+    for (let day = 0; day < d; day++) {
       document.querySelectorAll('.dot')[day].classList.remove('bg-gray-6');
       document.querySelectorAll('.dot')[day].classList.add('bg-black');
     }
