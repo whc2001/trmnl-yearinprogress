@@ -11,8 +11,8 @@
       return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
     }
 
-    function getDayOfYear(date, timezoneOffset) {
-      const startOfYear = new Date(new Date(date.getFullYear(), 0, 1).getTime() + timezoneOffset * 1000);
+    function getDayOfYear(date) {
+      const startOfYear = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
       const diff = date - startOfYear;
       const dayNumber = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
       return dayNumber;
@@ -56,8 +56,8 @@
       }
     }
 
-    day = getDayOfYear(today, timezoneOffset);
-    percent = convertInPercent(today.getFullYear(), day);
+    day = getDayOfYear(today);
+    percent = convertInPercent(today.getUTCFullYear(), day);
 
     document.querySelector('#dayOfTheYear').textContent = day;
     document.querySelector('#inProgress').textContent = `${percent}%`;
@@ -71,6 +71,6 @@
       document.querySelector('.bar').style.width = `${percent}%`;
     }
 
-    document.getElementsByClassName('instance')[0].textContent = today.getFullYear();
+    document.getElementsByClassName('instance')[0].textContent = today.getUTCFullYear();
   });
 </script>
